@@ -1,6 +1,9 @@
 import User from "../model/UserModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 
 
@@ -50,7 +53,7 @@ export function loginUser (req,res){
                     isBlocked : user.isBlocked,
                     type : user.type,
                     profile_pic : user.profile_pic           
-                }, "cbc-key-9751")
+                }, process.env.SECRET)
                 
                 res.json({
                     message: "user logged in",
