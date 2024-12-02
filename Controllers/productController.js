@@ -1,21 +1,19 @@
 import Product from "../model/product.js";
 
 
-export function getProduct(req,res){
-    Product.find().then(
-        (productlist)=>{(
+export async function getProduct(req,res){
+     
+    try {
+    const productlist = await Product.find()
             res.json({
                 list: productlist
             })
-        )}
-       ).catch(
-        ()=>{
+        }catch(e) {
             res.json({
                 message: "Error"
             })
         }
-    )
-}
+    }
 
 
 export function createProduct (req,res){
@@ -48,21 +46,19 @@ export function createProduct (req,res){
 }
 
 
-export function getProductByName (req,res){
+export async function getProductByName(req, res) {
     const name = req.params.name;
 
-    Product.find({name : name}).then(
-        (productlist)=>{(
-            res.json({
-                list: productlist
-            })
-        )}
-    ).catch(
-        ()=>{
-            res.json({
-                message: "Error"
-            })
-        }
-    )
+    try {
+        const productlist = await Product.find({ name: name });
+        res.json({
+            list: productlist
+        });
+    } catch (error) {
+        res.json({
+            message: "Error",
+        });
+    }
 }
+
 
