@@ -16,33 +16,37 @@ export async function getProduct(req,res){
     }
 
 
-export function createProduct (req,res){
+export async function createProduct(req, res) {
+    console.log(req.user);
 
-    console.log(req.user)
+    // Check if the user is logged in
+    if (!req.user) {
+        res.json({
+            message: "You are not logged in"
+        });
+        return;
+    }
 
-     if(req.user == null){
-         res.json({
-              message:"You are not logged in"
-         })
-         return
-     }
-     if(req.user.type != "admin"){
-         res.json({
-             message:"You are not an admin"
-         })
-         return
-     }
+    // Check if the user is an admin
+    if (req.user.type !== "admin") {
+        res.json({
+            message: "You are not an admin"
+        });
+        return;
+    }
 
-    const product = new Product(req.body)
-        product.save().then(() => {
+    try {
+        const product = new Product(req.body);
+        await product.save();
             res.json({
-                message:"Product created"
-            })
-        }).catch(()=> {
-            res.json({
-                message:"Product not created"
-            })
-        })
+                message: "Product created"
+            });
+    } catch (e) {
+        res.json({
+            message: "Product not created",
+          
+        });
+    }
 }
 
 
@@ -54,7 +58,7 @@ export async function getProductByName(req, res) {
         res.json({
             list: productlist
         });
-    } catch (error) {
+    } catch (e) {
         res.json({
             message: "Error",
         });
