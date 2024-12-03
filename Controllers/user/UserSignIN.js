@@ -37,7 +37,7 @@ export async function loginUser(req, res) {
             );
 
             return res.json({
-                message: "User logged in",
+                message: "User logged in Successfully",
                 token: token
             });
         } else {

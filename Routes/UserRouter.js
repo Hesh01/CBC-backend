@@ -5,10 +5,8 @@ import { deleteUser } from '../Controllers/user/UserDelete.js';
 
 const userRouter = express.Router();
 
-userRouter.post("/", newUser)
-
-userRouter.post("/login", loginUser)
-
+userRouter.post("/signUp", newUser)
+userRouter.post("/signIn", loginUser)
 userRouter.delete("/" , deleteUser)
 
 export default userRouter;
