@@ -1,5 +1,5 @@
 import Product from '../../model/productModel.js';
-import { isAdmin } from '../user/UserSignUP.js';
+import { isAdmin } from '../user/permission.js';
 
 export async function createProduct(req, res) {
     
