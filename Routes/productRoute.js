@@ -1,12 +1,14 @@
 import express from "express";
-import { createProduct, getProduct, getProductByName } from "../Controllers/productController.js";
+import { createProduct } from "../Controllers/product/CreateProduct.js";
+import { getProduct } from "../Controllers/product/getProduct.js";
+import { getProductByName } from "../Controllers/product/getProductByName.js";
 
 
 const productRouter = express.Router();
 
-productRouter.get("/", getProduct)
-
 productRouter.post("/", createProduct)
+
+productRouter.get("/", getProduct)
 
 productRouter.get("/:name" ,getProductByName)
 
