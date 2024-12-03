@@ -6,10 +6,8 @@ import { getProductByName } from "../Controllers/product/getProductByName.js";
 
 const productRouter = express.Router();
 
-productRouter.post("/", createProduct)
-
-productRouter.get("/", getProduct)
-
+productRouter.post("/newProduct", createProduct)
+productRouter.get("/ProductList", getProduct)
 productRouter.get("/:name" ,getProductByName)
 
 export default productRouter;

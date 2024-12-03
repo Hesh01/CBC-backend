@@ -44,7 +44,6 @@ app.use(express.json())
 app.use(bodyParser.json())
 
 app.use ("/api/users", userRouter)
-
 app.use("/api/product",productRouter)
 
 

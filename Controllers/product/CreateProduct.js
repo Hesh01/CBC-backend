@@ -1,29 +1,22 @@
 import Product from '../../model/productModel.js';
+import { isAdmin } from '../user/UserSignUP.js';
 
 export async function createProduct(req, res) {
-     console.log(req.user);
-
-    // Check if the user is logged in
-    if (!req.user) {
+    
+    if(!isAdmin(req)){
         res.json({
-            message: "You are not logged in"
-        });
-        return;
-    }
-
-    // Check if the user is an admin
-    if (req.user.type !== "admin") {
-        res.json({
-            message: "You are not an admin"
-        });
-        return;
-    }
+          message: "Please login as administrator to add products"
+        })
+        return
+      }
+    
+      const newProduct = req.body
 
     try {
-        const product = new Product(req.body);
+        const product = new Product(newProduct);
         await product.save();
             res.json({
-                message: "Product created"
+                message: "Product created Successfully"
             });
     } catch (e) {
         res.json({
