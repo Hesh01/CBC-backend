@@ -21,9 +21,9 @@ export async function createOrder(req,res){
         }else{
           const currentOrderId = latestOrder[0].orderId
     
-          const numberString =  currentOrderId.replace("CBC","")
+          const numberString =  currentOrderId.replace("CBC","")  // remove the CBC
     
-          const number = parseInt(numberString)
+          const number = parseInt(numberString)       //convert to number
     
           const newNumber = (number + 1).toString().padStart(4, "0");
     
