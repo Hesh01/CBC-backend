@@ -5,6 +5,7 @@ import productRouter from './Routes/productRoute.js';
 import userRouter from './Routes/UserRouter.js';
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import orderRouter from './Routes/OrderRoute.js';
 
 dotenv.config();
 
@@ -45,6 +46,7 @@ app.use(bodyParser.json())
 
 app.use ("/api/users", userRouter)
 app.use("/api/product",productRouter)
+app.use("/api/orders",orderRouter)
 
 
 

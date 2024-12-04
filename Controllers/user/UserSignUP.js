@@ -58,5 +58,5 @@ export async function newUser(req, res) {
 
 
 
-//email : "emma.jones@example.com"        "password": "EmmaSecure123!"        admin
-//"email": "lucas.miller@example.com"        "password": "LucasSecure456!"     customer   
+// { email : "emma.jones@example.com" , "password": "EmmaSecure123!" }       admin
+//    {"email": "lucas.miller@example.com" , "password": "LucasSecure456!"}     customer   
